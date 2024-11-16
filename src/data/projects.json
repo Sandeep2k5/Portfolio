@@ -1,0 +1,24 @@
+
+[
+  {
+    "title": "Simulation of cryptocurrency",
+    "imageSrc": "cry",
+    "description": "Built a Python-based cryptocurrency wallet using Blockchain integration",
+    "skills": ["Python", "Blockchain", "Web3"],
+    "source": "https://github.com/Sandeep2k5/Cryptocurreny-Wallet"
+  },
+  {
+    "title": "ToDO - app",
+    "imageSrc": "tod",
+    "description": "Built a fully functionable Todo application which is having the CRUD Properties ",
+    "skills": ["React", "Express", "Node", "MongoDB"],
+    "source": "https://github.com/Sandeep2k5/Todo"
+  },
+  {
+    "title": "Student-GPT",
+    "imageSrc": "chat",
+    "description": "A Web-based Chatbot for students like Chatgpt-3.0",
+    "skills": ["React", "FastApi", "Python"],
+    "source": "https://github.com/ClassicBSK/Studentgpt"
+  }
+]
