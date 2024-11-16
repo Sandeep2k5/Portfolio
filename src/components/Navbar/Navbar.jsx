@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import styles from "./Navbar.module.css";
-import clo from '../../assets/About/close.png';
-import opn from '../../assets/About/opn.png';
 
 
 export const Navbar = () => {
@@ -14,16 +12,6 @@ export const Navbar = () => {
         Portfolio
       </a>
       <div className={styles.menu}>
-        <img
-          className={styles.menuBtn}
-          src={
-            menuOpen
-              ?clo
-              : opn
-          }
-          alt="menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-        />
         <ul
           className={`${styles.menuItems} ${menuOpen && styles.menuOpen}`}
           onClick={() => setMenuOpen(false)}
