@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./ProjectCard.module.css";
 import chat from '../../assets/Projects/chatbot.png';
 import cry from '../../assets/Projects/OIP.jpg';
-import tod from '../../assets/Projects/react.jpg';
+import tod from '../../assets/Projects/react.png';
 
 function findA(ad) {
   if (ad === "tod") {
