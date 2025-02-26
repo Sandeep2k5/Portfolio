@@ -40,8 +40,7 @@ export const About = () => {
                   <br/>
                   <strong>Software:</strong>
                   <FontAwesomeIcon icon={faGitAlt} className={styles.icon} />
-                  <FontAwesomeIcon icon={faDatabase} className={styles.icon} /> MySQL
-                  <FontAwesomeIcon icon={faDatabase} className={styles.icon} /> MongoDB
+                  <FontAwesomeIcon icon={faDatabase} className={styles.icon} />MongoDB
                   <br/>
                   <strong>Frameworks:</strong>
                   <FontAwesomeIcon icon={faReact} className={styles.icon} /> 
