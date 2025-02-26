@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Hero.module.css";
 import ss1 from '../../assets//Hero/file.png';
-import resumePdf from '../../assets//Hero/Sandeep - Academic resume.pdf';
+import resumePdf from '../../assets//Hero/Academic resume.pdf';
 
 export const Hero = () => {
   return (
