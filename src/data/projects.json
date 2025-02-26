@@ -8,11 +8,11 @@
     "source": "https://github.com/Sandeep2k5/Cryptocurreny-Wallet"
   },
   {
-    "title": "ToDO - app",
+    "title": "Sicko Shoe Store ",
     "imageSrc": "tod",
-    "description": "Built a fully functionable Todo application which is having the CRUD Properties ",
-    "skills": ["React", "Express", "Node", "MongoDB"],
-    "source": "https://github.com/Sandeep2k5/Todo"
+    "description": "Built a highly responsive and SEO-friendly e-commerce platform using Next.js and Tailwind CSS  ",
+    "skills": ["Next", "Tailwind"],
+    "source": "https://github.com/Sandeep2k5/Sicko_Shoe_Store.git"
   },
   {
     "title": "Student-GPT",
