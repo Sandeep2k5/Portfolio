@@ -2,7 +2,6 @@ import React from "react";
 
 import styles from "./Hero.module.css";
 import ss1 from '../../assets//Hero/file.png';
-import resumePdf from '../../assets/Hero/Academic_resume.pdf';
 
 export const Hero = () => {
   return (
@@ -12,7 +11,7 @@ export const Hero = () => {
         <p className={styles.description}>
          A passionate software developer with a strong foundation in Java, Python and in MERN Stack.
         </p>
-        <a href={resumePdf} className={styles.contactBtn}>
+        <a href={"https://drive.google.com/file/d/1YLySwAcu0SsxFSmUPF2TkU_EonKwEvTZ/view?usp=sharing"} className={styles.contactBtn}>
           Download My Resume
         </a>
       </div>
