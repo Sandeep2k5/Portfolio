@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.fd3f11b1.css",
-    "main.js": "/Portfolio/static/js/main.615fc768.js",
-    "static/js/453.f2cee86e.chunk.js": "/Portfolio/static/js/453.f2cee86e.chunk.js",
-    "static/media/Sandeep - Academic resume.pdf": "/Portfolio/static/media/Sandeep - Academic resume.b3c9499cb7ae49416102.pdf",
-    "static/media/Profile.jpeg": "/Portfolio/static/media/Profile.0d550c1a7260cdf50089.jpeg",
-    "static/media/file.png": "/Portfolio/static/media/file.b41d3194070a5b9ff464.png",
-    "static/media/opn.png": "/Portfolio/static/media/opn.9067fadbbcc4ede1b1b7.png",
-    "static/media/react.jpg": "/Portfolio/static/media/react.da4de3e020301ccec49b.jpg",
-    "static/media/OIP.jpg": "/Portfolio/static/media/OIP.1d61b131cace2ba11368.jpg",
-    "static/media/chatbot.png": "/Portfolio/static/media/chatbot.aa59dbd7c58fc3135953.png",
-    "index.html": "/Portfolio/index.html",
-    "main.fd3f11b1.css.map": "/Portfolio/static/css/main.fd3f11b1.css.map",
-    "main.615fc768.js.map": "/Portfolio/static/js/main.615fc768.js.map",
-    "453.f2cee86e.chunk.js.map": "/Portfolio/static/js/453.f2cee86e.chunk.js.map"
+    "main.css": "/Portolio/static/css/main.feaffd1f.css",
+    "main.js": "/Portolio/static/js/main.5fa35d46.js",
+    "static/js/453.f2cee86e.chunk.js": "/Portolio/static/js/453.f2cee86e.chunk.js",
+    "static/media/Sandeep Resume.pdf": "/Portolio/static/media/Sandeep Resume.2f77b8c259c832d5c802.pdf",
+    "static/media/Profile.jpeg": "/Portolio/static/media/Profile.0d550c1a7260cdf50089.jpeg",
+    "static/media/123.jpg": "/Portolio/static/media/123.8560e50b5113f0b37da9.jpg",
+    "static/media/pub2.png": "/Portolio/static/media/pub2.803367185011cef78712.png",
+    "static/media/react.png": "/Portolio/static/media/react.4638fca71f4e6493af61.png",
+    "static/media/OIP.jpg": "/Portolio/static/media/OIP.1d61b131cace2ba11368.jpg",
+    "static/media/chatbot.png": "/Portolio/static/media/chatbot.aa59dbd7c58fc3135953.png",
+    "index.html": "/Portolio/index.html",
+    "main.feaffd1f.css.map": "/Portolio/static/css/main.feaffd1f.css.map",
+    "main.5fa35d46.js.map": "/Portolio/static/js/main.5fa35d46.js.map",
+    "453.f2cee86e.chunk.js.map": "/Portolio/static/js/453.f2cee86e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd3f11b1.css",
-    "static/js/main.615fc768.js"
+    "static/css/main.feaffd1f.css",
+    "static/js/main.5fa35d46.js"
   ]
 }
