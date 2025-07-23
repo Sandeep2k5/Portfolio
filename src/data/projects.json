@@ -8,11 +8,11 @@
     "source": "https://github.com/Sandeep2k5/Cryptocurreny-Wallet"
   },
   {
-    "title": "Sicko Shoe Store ",
+    "title": "APK Malware Detection and Family Prediction Using  CNN-LSTM and RF Classifiers",
     "imageSrc": "tod",
-    "description": "Built a highly responsive and SEO-friendly e-commerce platform using Next.js and Tailwind CSS  ",
-    "skills": ["Next", "Tailwind"],
-    "source": "https://github.com/Sandeep2k5/Sicko_Shoe_Store.git"
+    "description": "Built a DL model for classifying APK malwares and its belonging with various models and classifiers ",
+    "skills": ["Python", "Transformers"],
+    "source": "https://github.com/Sandeep2k5/Artificial-Intelligence-Model-for-Android-Malware-Detection"
   },
   {
     "title": "Student-GPT",

@@ -8,9 +8,9 @@ export const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <a className={styles.title} href="/">
+      <h className={styles.title} >
         Portfolio
-      </a>
+      </h>
       <div className={styles.menu}>
         <ul
           className={`${styles.menuItems} ${menuOpen && styles.menuOpen}`}
@@ -20,7 +20,13 @@ export const Navbar = () => {
             <a href="#about">About</a>
           </li>
           <li>
+            <a href="#Exp">Experience</a>
+          </li>
+          <li>
             <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#publica">Publications</a>
           </li>
           <li>
             <a href="#contact">Contact</a>
