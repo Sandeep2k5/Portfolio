@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Hero.module.css";
 import ss1 from '../../assets//Hero/123.jpg';
-import resumePdf from '../../assets//Hero/Sandeep Resume.pdf';
+import resumePdf from '../../assets//Hero/Sandeep_Resume.pdf';
 
 export const Hero = () => {
   return (
@@ -26,3 +26,4 @@ export const Hero = () => {
     </section>
   );
 };
+
