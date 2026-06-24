@@ -22,7 +22,6 @@ const experienceData = [
 ];
 
 export const Exp = () => {
-  console.log("Experience component rendered");
   return (
     
     <div id = "Exp" className={styles.wrapper}>

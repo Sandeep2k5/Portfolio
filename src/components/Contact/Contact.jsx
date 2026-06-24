@@ -8,22 +8,21 @@ export const Contact = () => {
   return (
     <footer id="contact" className={styles.container}>
       <div className={styles.text}>
-        <h2>Contact</h2>
+        <h2>Let's Connect</h2>
+        <p>Open to opportunities and collaborations.</p>
       </div>
       <ul className={styles.links}>
         <li className={styles.link}>
-          <FontAwesomeIcon icon={faEnvelope} className={styles.icon}></FontAwesomeIcon>
-          <a href="sandeeputhayakumar@gmail.com">Mail</a>
+          <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+          <a href="mailto:sandeeputhayakumar@gmail.com">Mail</a>
         </li>
         <li className={styles.link}>
           <FontAwesomeIcon icon={faLinkedinIn} className={styles.icon} />
-          <a href="https://www.linkedin.com/in/sandeep-uthayakumar-8b7242255/" target="_blank" rel="noopener noreferrer">LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/sandeep-uthayakumar-8b7242255/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </li>
         <li className={styles.link}>
           <FontAwesomeIcon icon={faGithub} className={styles.icon} />
-          <a href="https://github.com/Sandeep2k5" target="_blank" rel="noopener noreferrer">GitHub
-          </a>
+          <a href="https://github.com/Sandeep2k5" target="_blank" rel="noopener noreferrer">GitHub</a>
         </li>
       </ul>
     </footer>

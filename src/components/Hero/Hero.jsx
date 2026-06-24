@@ -8,12 +8,12 @@ export const Hero = () => {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Hi,I'm Sandeep</h1>
+        <h1 className={styles.title}>Hi, I'm Sandeep</h1>
         <p className={styles.description}>
          A curious software developer with a strong foundation in C++, DSA and in MERN Stack.
         </p>
-        <a href={resumePdf} className={styles.contactBtn}>
-          Download My Resume
+        <a href={resumePdf} download className={styles.contactBtn}>
+          Download Resume
         </a>
       </div>
       <img
