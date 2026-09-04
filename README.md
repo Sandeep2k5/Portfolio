@@ -6,15 +6,10 @@
 
 ### Not a page. A flight through a city.
 
-One WebGL scene. One camera. One continuous shot.<br>
-Scroll doesn't move a document past you — it flies a camera down a procedural
-skyline, and every chapter of the résumé is a keyframe on that flight path.
-
 ### [→ sandeep2k5.netlify.app](https://sandeep2k5.netlify.app/)
 
 [![React](https://img.shields.io/badge/React-18.3-61dafb?style=for-the-badge&logo=react&logoColor=000)](https://react.dev)
 [![three.js](https://img.shields.io/badge/three.js-r180-000000?style=for-the-badge&logo=three.js&logoColor=fff)](https://threejs.org)
-[![GSAP](https://img.shields.io/badge/GSAP-ScrollTrigger-88ce02?style=for-the-badge&logo=greensock&logoColor=000)](https://gsap.com)
 [![GLSL](https://img.shields.io/badge/GLSL-6_custom_shaders-ff3b4a?style=for-the-badge)](src/three/shaders.js)
 
 </div>
@@ -79,59 +74,3 @@ at the clouds, and three ways to reach me.
 ![Signal](docs/media/06-signal.jpg)
 
 ---
-
-## Under the hood
-
-Six hand-written GLSL programs do the heavy lifting — procedurally-lit tower
-façades with thousands of windows and no textures, a spider-web dome of spokes
-and sagging chords, up to 2,600 drifting motes, the dimensional rifts,
-velocity-driven chromatic ghosting, volumetric light shafts, and a full-screen
-pass for the halftone dots and RGB split.
-
-A few things that were harder than they look:
-
-**The preloader that looked broken.** Constructing the scene compiles every
-shader in one synchronous burst — doing that while the preloader animated
-blocked the main thread and stalled the very timers meant to dismiss it. The
-chunk downloads immediately, but the scene is *built* only after the curtain
-lifts.
-
-**The cursor that vanished.** When the GPU starves the frame loop during
-scroll, GSAP's lag smoothing stretches every tween and the reticle falls
-seconds behind the pointer. Fix: `lagSmoothing(0)`, the dot written
-synchronously inside the pointer event, everything else damped against
-wall-clock time rather than frame count.
-
-**Three quality tiers, chosen at runtime.** `detectQuality()` reads viewport,
-`hardwareConcurrency` and `deviceMemory`, then scales DPR, building count,
-particles and bloom — dropping the bloom pass entirely on low. A phone gets a
-scene it can actually render.
-
-**Budget.** three.js and the whole scene graph are code-split into a lazily
-loaded ~538 KB chunk, so the ~291 KB main bundle never waits on WebGL. The page
-paints its own background before React boots — there is never a white flash.
-
-**Accessibility isn't an afterthought.** Every colour pair is checked against
-WCAG AA, `prefers-reduced-motion` is honoured in the CSS *and* the 3D scene,
-and WebGL failure is a supported state — lose the context and what remains is a
-complete, readable portfolio.
-
----
-
-<div align="center">
-
-## Reach me
-
-Software Engineer at **HSBC** — backend systems and full-stack products in C++,
-Python and the MERN stack. Two peer-reviewed papers, IEEE Access and
-ScienceDirect.
-
-[![Email](https://img.shields.io/badge/Email-sandeeputhayakumar%40gmail.com-ff3b4a?style=for-the-badge&logo=gmail&logoColor=fff)](mailto:sandeeputhayakumar@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-sandeep--uthayakumar-4d86ff?style=for-the-badge&logo=linkedin&logoColor=fff)](https://www.linkedin.com/in/sandeep-uthayakumar-8b7242255/)
-[![GitHub](https://img.shields.io/badge/GitHub-%40Sandeep2k5-34e7f2?style=for-the-badge&logo=github&logoColor=000)](https://github.com/Sandeep2k5)
-
-<br>
-
-**THWIP.**
-
-</div>
