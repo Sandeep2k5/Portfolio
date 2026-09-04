@@ -8,7 +8,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { PROFILE, STACK, TRAITS } from "../data/site.js";
 import { Head, Reveal, Panel, Boom, WebCorners, Sense } from "./common/Bits.jsx";
-import portrait from "../assets/About/portrait.png";
+import portrait from "../assets/About/portrait.jpg";
 
 function TiltPortrait() {
   const stageRef = useRef(null);
