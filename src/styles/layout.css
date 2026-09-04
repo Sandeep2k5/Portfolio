@@ -1,0 +1,999 @@
+/* ============================================================
+   LAYOUT — the six chapters.
+   Every grid here sits inside a preserve-3d stage, so the
+   translateZ values below are genuine depth, not fake shadows.
+   ============================================================ */
+
+/* ---------------- WORLD CANVAS ---------------- */
+.world {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  /* three.js loads on its own schedule now; the city fades up over the
+     painted backdrop instead of popping in. */
+  opacity: 0;
+  transition: opacity 900ms var(--e-out);
+}
+.world.is-live {
+  opacity: 1;
+}
+.world-off {
+  display: none;
+}
+
+/* Painted skyline: the whole visual when WebGL is unavailable */
+.world-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(80% 55% at 50% 0%, rgba(255, 59, 74, 0.22), transparent 60%),
+    radial-gradient(70% 50% at 12% 88%, rgba(31, 79, 216, 0.24), transparent 62%),
+    radial-gradient(60% 45% at 92% 68%, rgba(52, 231, 242, 0.14), transparent 60%),
+    linear-gradient(180deg, #0b0b16 0%, #05050a 55%, #0a0710 100%);
+}
+
+/* ---------------- SPLIT TYPE ---------------- */
+.split {
+  display: block;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+.split__c {
+  display: inline-block;
+  white-space: pre;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+/* ============================================================
+   00 · ORIGIN
+   ============================================================ */
+.act--hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(120px, 18vh, 200px);
+  padding-bottom: 0;
+}
+
+.hero {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.hero__stamp {
+  margin-bottom: var(--s-5);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: var(--s-5);
+  transform-style: preserve-3d;
+}
+/* Each line is sized for its own character count so the surname
+   never outruns the column or collides with the given name. */
+.hero__line--1 {
+  font-size: clamp(3.2rem, 13.5vw, 10.5rem);
+  color: var(--white);
+}
+.hero__line--2 {
+  font-size: clamp(1.72rem, 7.35vw, 5.7rem);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+  margin-top: 0.06em;
+  margin-left: 0.12em;
+}
+
+.hero__rule {
+  display: block;
+  height: 4px;
+  width: min(520px, 76%);
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    var(--red-500) 0%,
+    var(--blue-500) 55%,
+    transparent 100%
+  );
+  margin-bottom: var(--s-5);
+}
+
+.hero__lead {
+  max-width: 54ch;
+  margin-bottom: var(--s-6);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-bottom: var(--s-8);
+  transform-style: preserve-3d;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--s-4);
+  max-width: 860px;
+  transform-style: preserve-3d;
+}
+.hero__statPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--s-5);
+  min-height: 100%;
+}
+.hero__statValue {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  line-height: 0.9;
+  color: var(--hue, var(--accent));
+}
+.hero__statLabel {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.hero__statSub {
+  color: var(--text-mute);
+  font-size: var(--t-micro);
+}
+
+.hero__cue {
+  position: absolute;
+  right: 0;
+  bottom: -12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-mute);
+  transition: color var(--d-mid) var(--e-out);
+}
+.hero__cue:hover {
+  color: var(--accent);
+}
+.hero__cueLine {
+  width: 1px;
+  height: 54px;
+  background: linear-gradient(var(--accent), transparent);
+}
+.hero__cue svg {
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+.hero__boom {
+  top: 12%;
+  right: 4%;
+}
+
+.act--hero .marquee {
+  margin-top: clamp(60px, 10vh, 130px);
+}
+
+/* ============================================================
+   01 · THE MASK
+   ============================================================ */
+.mask__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(32px, 5vw, 76px);
+  align-items: start;
+  transform-style: preserve-3d;
+}
+
+.tilt {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.tilt__card {
+  position: relative;
+  transform-style: preserve-3d;
+  padding: 14px;
+  --gx: 50%;
+  --gy: 50%;
+}
+
+.tilt__imgWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--ink-900);
+}
+.tilt__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.14) saturate(0.85) brightness(0.94);
+}
+.tilt__ink {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 40%, rgba(5, 5, 10, 0.9) 100%),
+    linear-gradient(115deg, rgba(255, 59, 74, 0.26), transparent 55%),
+    linear-gradient(300deg, rgba(31, 79, 216, 0.3), transparent 58%);
+  mix-blend-mode: hard-light;
+}
+
+.tilt__glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(
+    circle at var(--gx) var(--gy),
+    rgba(255, 255, 255, 0.22),
+    transparent 52%
+  );
+}
+
+.tilt__tag {
+  position: absolute;
+  left: 14px;
+  bottom: 18px;
+  z-index: 6;
+  padding: 8px 14px;
+  background: var(--red-500);
+  color: #fff;
+  border: 2px solid #000;
+  font-size: var(--t-micro);
+  transform: translateZ(60px);
+}
+
+.tilt__id {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 6;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid var(--line-strong);
+  transform: translateZ(46px);
+}
+.tilt__id b {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--accent);
+}
+.tilt__id i {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  color: var(--text-mute);
+}
+
+.tilt__floor {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -34px;
+  height: 60px;
+  background: radial-gradient(
+    50% 60% at 50% 0%,
+    rgba(255, 59, 74, 0.3),
+    transparent 72%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.mask__body {
+  display: grid;
+  gap: var(--s-6);
+}
+.mask__lead {
+  color: var(--text);
+  font-size: var(--t-lead);
+}
+
+.mask__traits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--s-3);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-block: var(--s-4);
+}
+.mask__trait {
+  display: grid;
+  gap: 4px;
+}
+.mask__traitK {
+  color: var(--accent);
+}
+.mask__traitV {
+  font-size: 0.92rem;
+  color: var(--text-sub);
+}
+
+.mask__stack {
+  display: grid;
+  gap: var(--s-3);
+  transform-style: preserve-3d;
+}
+.mask__group {
+  padding: var(--s-5);
+  display: grid;
+  gap: var(--s-3);
+}
+.mask__groupLabel {
+  color: var(--hue, var(--accent));
+}
+
+/* ============================================================
+   02 · MISSION LOG
+   ============================================================ */
+.log {
+  position: relative;
+  display: grid;
+  gap: clamp(46px, 7vh, 92px);
+  transform-style: preserve-3d;
+}
+
+.log__spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.09);
+}
+.log__spineFill {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  background: linear-gradient(
+    180deg,
+    var(--red-400),
+    var(--blue-400) 55%,
+    var(--cyan-400)
+  );
+  box-shadow: 0 0 16px rgba(255, 59, 74, 0.55);
+}
+
+.log__row {
+  display: grid;
+  grid-template-columns: 1fr 68px 1fr;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.log__node {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--hue, var(--accent));
+  background: var(--ink-900);
+  box-shadow: 0 0 22px var(--glow, rgba(255, 59, 74, 0.6));
+  z-index: 2;
+}
+.log__node > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hue, var(--accent));
+}
+
+.log__meta {
+  grid-row: 1;
+  display: grid;
+  gap: 6px;
+  padding-inline: var(--s-4);
+}
+.log__period {
+  color: var(--text);
+  font-size: 0.76rem;
+}
+.log__kind {
+  font-size: var(--t-micro);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.log__card {
+  grid-row: 1;
+  padding: var(--s-6);
+  display: grid;
+  gap: var(--s-4);
+}
+.log__company {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+.log__role {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hue, var(--accent));
+  margin-top: 6px;
+}
+.log__details {
+  display: grid;
+  gap: 10px;
+}
+.log__details li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--text-sub);
+  font-size: 0.94rem;
+  max-width: 46ch;
+}
+.log__details li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 9px;
+  height: 2px;
+  background: var(--hue, var(--accent));
+}
+
+.log__row:nth-of-type(odd) .log__meta {
+  grid-column: 1;
+  justify-items: end;
+  text-align: right;
+}
+.log__row:nth-of-type(odd) .log__card {
+  grid-column: 3;
+}
+.log__row:nth-of-type(even) .log__card {
+  grid-column: 1;
+}
+.log__row:nth-of-type(even) .log__meta {
+  grid-column: 3;
+  justify-items: start;
+  text-align: left;
+}
+
+.log__foot {
+  margin-top: var(--s-7);
+  text-align: center;
+}
+.log__footNote {
+  color: var(--text-mute);
+  margin-inline: auto;
+}
+
+/* ============================================================
+   03 · THE MULTIVERSE
+   ============================================================ */
+.verse__intro {
+  max-width: 58ch;
+  margin-bottom: var(--s-8);
+}
+
+.verse {
+  display: grid;
+  gap: clamp(40px, 5.5vw, 76px);
+  transform-style: preserve-3d;
+}
+
+.verse__cell {
+  transform-style: preserve-3d;
+}
+
+.verse__cover {
+  position: relative;
+  display: grid;
+  gap: var(--s-4);
+  padding: clamp(24px, 3.4vw, 46px);
+  transform-style: preserve-3d;
+  overflow: hidden;
+  transition:
+    transform var(--d-mid) var(--e-out),
+    box-shadow var(--d-mid) var(--e-out),
+    border-color var(--d-mid) var(--e-out);
+}
+.verse__cover:hover,
+.verse__cover:focus-within {
+  box-shadow: var(--shadow-lift);
+  border-color: var(--line-strong);
+}
+
+.verse__rift {
+  position: absolute;
+  top: 50%;
+  right: -14%;
+  width: min(58%, 420px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  color: var(--hue, var(--accent));
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+  animation: riftSpin 34s linear infinite;
+}
+@keyframes riftSpin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.verse__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  transform-style: preserve-3d;
+}
+.verse__n {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--hue, var(--accent));
+  opacity: 0.75;
+}
+.verse__universe {
+  padding: 6px 12px;
+  border: 1px solid var(--hue, var(--accent));
+  color: var(--hue, var(--accent));
+  font-size: var(--t-micro);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.verse__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.1vw, 2.6rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  max-width: 20ch;
+}
+
+.verse__blurb {
+  color: var(--text-sub);
+  max-width: 52ch;
+}
+
+.verse__chips {
+  margin-top: 2px;
+}
+
+.verse__link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--s-2);
+  padding: 12px 0;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  position: relative;
+}
+.verse__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 2px;
+  background: var(--hue, var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--d-mid) var(--e-out);
+}
+.verse__link:hover::after,
+.verse__link:focus-visible::after {
+  transform: scaleX(1);
+}
+.verse__linkIcon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--hue, var(--accent));
+  transition: transform var(--d-mid) var(--e-spring),
+    background var(--d-mid) var(--e-out);
+}
+.verse__link:hover .verse__linkIcon {
+  transform: translate(3px, -3px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+@media (min-width: 900px) {
+  .verse {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .verse__cell:nth-child(1) { grid-column: 1 / span 7; }
+  .verse__cell:nth-child(2) { grid-column: 6 / span 7; }
+  .verse__cell:nth-child(3) { grid-column: 3 / span 7; }
+}
+
+/* ============================================================
+   04 · THE DAILY BUGLE
+   ============================================================ */
+.press {
+  margin-bottom: var(--s-8);
+  text-align: center;
+  transform-style: preserve-3d;
+}
+.press__masthead {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  padding: var(--s-5) var(--s-4);
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 3px solid #000;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.6);
+  transform: rotate(-0.6deg);
+}
+.press__ruleTop,
+.press__ruleBottom {
+  width: 100%;
+  height: 3px;
+  background: var(--paper-ink);
+}
+.press__ruleBottom {
+  height: 1px;
+  box-shadow: 0 3px 0 var(--paper-ink);
+}
+.press__strap,
+.press__sub {
+  color: #4a4238;
+  font-size: var(--t-micro);
+}
+.press__name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7.5vw, 5.4rem);
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.press__grid {
+  display: grid;
+  gap: clamp(30px, 4vw, 56px);
+  transform-style: preserve-3d;
+}
+.press__grid > li {
+  transform-style: preserve-3d;
+}
+@media (min-width: 880px) {
+  .press__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.clip {
+  position: relative;
+  display: grid;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 3px solid #000;
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.55);
+  /* No transform-style here on purpose: preserve-3d on an interactive
+     leaf makes Chrome hit-test it as a 3D plane and return its parent
+     from elementFromPoint, so hover and clicks stop landing. Depth for
+     its translateZ comes from the preserve-3d container above it. */
+  transition:
+    transform var(--d-slow) var(--e-out),
+    box-shadow var(--d-slow) var(--e-out);
+}
+.clip--a { transform: rotate(-1.4deg); }
+.clip--b { transform: rotate(1.1deg); }
+.clip:hover,
+.clip:focus-visible {
+  transform: rotate(0deg) translateZ(50px) scale(1.015);
+  box-shadow: 20px 22px 0 rgba(0, 0, 0, 0.6), 0 0 90px -20px rgba(255, 59, 74, 0.55);
+}
+
+.clip__tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 116px;
+  height: 28px;
+  transform: translateX(-50%) rotate(-2.4deg);
+  background: rgba(255, 213, 74, 0.72);
+  border-left: 1px dashed rgba(0, 0, 0, 0.25);
+  border-right: 1px dashed rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.clip__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 2px solid var(--paper-ink);
+  background: #ddd6c6;
+}
+.clip__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.35) brightness(1.05);
+}
+.clip__thumbInk {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(20, 16, 12, 0.5) 1px,
+    transparent 1.6px
+  );
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+.clip__body {
+  display: grid;
+  gap: 10px;
+}
+.clip__venue {
+  color: #7a2016;
+  font-weight: 700;
+  font-size: var(--t-micro);
+}
+.clip__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.3vw, 1.85rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.clip__blurb {
+  color: #3d362d;
+  font-size: 0.93rem;
+  max-width: 46ch;
+}
+.clip__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding-block: 8px;
+  min-height: 40px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a2016;
+  border-bottom: 2px solid currentColor;
+  justify-self: start;
+}
+.clip:hover .clip__cta { color: #a8140f; }
+.clip:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; }
+
+/* ============================================================
+   05 · SIGNAL
+   ============================================================ */
+.signal {
+  position: relative;
+  overflow: hidden;
+}
+.signal__beam {
+  position: absolute;
+  top: 4%;
+  right: -12%;
+  width: min(620px, 78vw);
+  aspect-ratio: 1;
+  color: var(--amber-400);
+  opacity: 0.13;
+  pointer-events: none;
+  animation: beamSpin 60s linear infinite;
+}
+@keyframes beamSpin {
+  to { transform: rotate(360deg); }
+}
+
+.signal__headWrap {
+  transform-style: preserve-3d;
+}
+.signal__stamp {
+  margin-bottom: var(--s-5);
+}
+.signal__title {
+  font-size: var(--t-h1);
+  line-height: 0.88;
+  margin-bottom: var(--s-5);
+}
+.signal__line--accent {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+}
+.signal__lead {
+  max-width: 52ch;
+  margin-bottom: var(--s-8);
+}
+
+.signal__links {
+  display: grid;
+  gap: var(--s-3);
+  margin-bottom: var(--s-8);
+  transform-style: preserve-3d;
+}
+.signal__links > li {
+  transform-style: preserve-3d;
+}
+
+.wire {
+  display: grid;
+  grid-template-columns: 44px 108px 1fr 32px;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  min-height: 68px;
+  background: var(--glass-hi);
+  border: 1px solid var(--line);
+  /* No transform-style here on purpose: preserve-3d on an interactive
+     leaf makes Chrome hit-test it as a 3D plane and return its parent
+     from elementFromPoint, so hover and clicks stop landing. Depth for
+     its translateZ comes from the preserve-3d container above it. */
+  transition:
+    transform var(--d-mid) var(--e-out),
+    background var(--d-mid) var(--e-out),
+    border-color var(--d-mid) var(--e-out);
+}
+.wire:hover,
+.wire:focus-visible {
+  transform: translateZ(34px) translateX(6px);
+  background: rgba(255, 255, 255, 0.075);
+  border-color: var(--accent);
+}
+.wire__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--accent);
+}
+.wire__label {
+  color: var(--text-mute);
+}
+.wire__value {
+  color: var(--text);
+  font-size: 0.97rem;
+  overflow-wrap: anywhere;
+}
+.wire__arrow {
+  color: var(--text-mute);
+  transition: transform var(--d-mid) var(--e-spring), color var(--d-mid);
+}
+.wire:hover .wire__arrow {
+  transform: translate(4px, -4px);
+  color: var(--accent);
+}
+
+.signal__ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-bottom: var(--s-8);
+  transform-style: preserve-3d;
+}
+
+.signal__card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  color: var(--text-mute);
+}
+.signal__built {
+  color: var(--text-mute);
+}
+.signal__top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color var(--d-fast) var(--e-out);
+}
+.signal__top:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 980px) {
+  .mask__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+  }
+  .tilt {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 760px) {
+  .log__spine {
+    left: 13px;
+    transform: none;
+  }
+  .log__row {
+    grid-template-columns: 26px 1fr;
+    gap: var(--s-4);
+    align-items: start;
+  }
+  .log__row .log__node {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    margin-top: 4px;
+  }
+  .log__row:nth-of-type(odd) .log__meta,
+  .log__row:nth-of-type(even) .log__meta {
+    grid-column: 2;
+    grid-row: 1;
+    justify-items: start;
+    text-align: left;
+    padding-inline: 0;
+    margin-bottom: var(--s-3);
+  }
+  .log__row:nth-of-type(odd) .log__card,
+  .log__row:nth-of-type(even) .log__card {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .wire {
+    grid-template-columns: 40px 1fr;
+    grid-template-areas:
+      "icon label"
+      "icon value";
+    row-gap: 2px;
+    padding: var(--s-4);
+  }
+  .wire__icon { grid-area: icon; width: 40px; height: 40px; }
+  .wire__label { grid-area: label; }
+  .wire__value { grid-area: value; }
+  .wire__arrow { display: none; }
+
+  .hero__cue { display: none; }
+  .clip--a, .clip--b { transform: rotate(0deg); }
+  .boom { font-size: 1.15rem; }
+}
+
+@media (max-width: 480px) {
+  .hero__stats { grid-template-columns: 1fr; }
+  .press__masthead { transform: none; }
+}

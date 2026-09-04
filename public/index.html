@@ -2,45 +2,82 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/spiderman-icon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#08080c" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>Sandeep Uthayakumar — Software Engineer</title>
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Software engineer at HSBC building backend systems and full-stack products in C++, Python and the MERN stack. Two peer-reviewed papers in IEEE Access and ScienceDirect."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/spiderman-icon.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="author" content="Sandeep Uthayakumar" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Sandeep | Developer Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sandeep Uthayakumar — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Backend systems, full-stack products and published ML research — presented as a 3D comic."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="%PUBLIC_URL%/spiderman-icon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/spiderman-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bungee&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+
+    <style>
+      /* Paint the world before React boots so there is never a white flash. */
+      html,
+      body {
+        margin: 0;
+        background: #05050a;
+        color: #f2f2f5;
+      }
+      #root:empty::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(80% 55% at 50% 0%, rgba(255, 59, 74, 0.18), transparent 60%),
+          radial-gradient(70% 50% at 12% 88%, rgba(31, 79, 216, 0.2), transparent 62%),
+          #05050a;
+      }
+      .no-js {
+        max-width: 42rem;
+        margin: 22vh auto;
+        padding: 0 1.5rem;
+        font: 16px/1.6 system-ui, sans-serif;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div class="no-js">
+        <h1>Sandeep Uthayakumar — Software Engineer</h1>
+        <p>
+          This portfolio is a 3D experience and needs JavaScript. Reach me at
+          <a href="mailto:sandeeputhayakumar@gmail.com" style="color: #ff3b4a"
+            >sandeeputhayakumar@gmail.com</a
+          >
+          or on
+          <a
+            href="https://www.linkedin.com/in/sandeep-uthayakumar-8b7242255/"
+            style="color: #ff3b4a"
+            >LinkedIn</a
+          >.
+        </p>
+      </div>
+    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

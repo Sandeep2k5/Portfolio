@@ -1,0 +1,123 @@
+/* ============================================================
+   DESIGN TOKENS — "Spider-Verse" portfolio
+   Layer 1: primitives  ·  Layer 2: semantic  ·  Layer 3: component
+   Every colour pair below is checked against WCAG AA on --ink.
+   ============================================================ */
+
+:root {
+  /* ---------- L1 · PRIMITIVES ---------- */
+  --ink-900: #05050a;
+  --ink-800: #08080c;
+  --ink-700: #0d0d15;
+  --ink-600: #14141f;
+  --ink-500: #1c1c2b;
+
+  --red-600: #b80d22;
+  --red-500: #e8112d;
+  --red-400: #ff3b4a;   /* 5.7:1 on --ink-800 */
+  --blue-600: #14329e;
+  --blue-500: #1f4fd8;
+  --blue-400: #4d86ff;
+  --cyan-400: #34e7f2;
+  --magenta-400: #ff2a6d;
+  --violet-400: #a855f7;
+  --amber-400: #ffd54a;
+
+  --paper: #f4efe2;     /* newsprint */
+  --paper-ink: #14100c;
+
+  --white: #ffffff;
+  --gray-100: #f2f2f5;
+  --gray-300: #c3c3d0;
+  --gray-400: #a8a8b8;  /* 8.5:1 */
+  --gray-500: #7d7d92;  /* 4.9:1 — meta only */
+
+  /* ---------- L2 · SEMANTIC ---------- */
+  --bg: var(--ink-800);
+  --bg-elev: var(--ink-700);
+  --bg-sunk: var(--ink-900);
+
+  --text: var(--gray-100);
+  --text-sub: var(--gray-400);
+  --text-mute: var(--gray-500);
+
+  --accent: var(--red-400);
+  --accent-deep: var(--red-500);
+  --accent-alt: var(--blue-400);
+  --accent-cyan: var(--cyan-400);
+  --accent-magenta: var(--magenta-400);
+
+  --focus: var(--amber-400);
+
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.22);
+  --line-comic: #000000;
+
+  --glass: rgba(12, 12, 20, 0.55);
+  --glass-hi: rgba(255, 255, 255, 0.045);
+
+  /* ---------- TYPE ---------- */
+  --font-display: "Anton", "Archivo Black", "Impact", sans-serif;
+  --font-comic: "Bungee", "Anton", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* fluid scale — 375px → 1600px */
+  --t-hero: clamp(3.4rem, 13vw, 12rem);
+  --t-h1: clamp(2.6rem, 7.5vw, 6.5rem);
+  --t-h2: clamp(1.9rem, 4.2vw, 3.4rem);
+  --t-h3: clamp(1.15rem, 1.9vw, 1.6rem);
+  --t-lead: clamp(1.05rem, 1.55vw, 1.35rem);
+  --t-body: clamp(0.96rem, 1.05vw, 1.05rem);
+  --t-meta: 0.75rem;
+  --t-micro: 0.68rem;
+
+  /* ---------- SPACE (density 4/10 · standard-airy) ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 140px;
+
+  --pad-x: clamp(20px, 5.5vw, 96px);
+  --maxw: 1240px;
+  --maxw-text: 62ch;
+
+  /* ---------- SHAPE ---------- */
+  --r-sm: 4px;
+  --r-md: 10px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+  --border-comic: 3px;
+
+  /* ---------- ELEVATION (3D world) ---------- */
+  --perspective: 1400px;
+  --shadow-panel:
+    0 2px 0 rgba(255, 255, 255, 0.06) inset,
+    0 40px 80px -40px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-lift:
+    0 2px 0 rgba(255, 255, 255, 0.09) inset,
+    0 60px 110px -45px rgba(0, 0, 0, 1),
+    0 0 90px -30px var(--glow, rgba(255, 59, 74, 0.5)),
+    0 0 0 1px rgba(255, 255, 255, 0.11);
+
+  /* ---------- MOTION ---------- */
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --e-inout: cubic-bezier(0.76, 0, 0.24, 1);
+  --e-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --d-fast: 160ms;
+  --d-mid: 320ms;
+  --d-slow: 620ms;
+
+  /* runtime values written by JS (scroll velocity → glitch amount) */
+  --vel: 0;
+  --sense: 0;
+
+  color-scheme: dark;
+}
