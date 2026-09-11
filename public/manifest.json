@@ -18,8 +18,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#08080c",
-  "background_color": "#05050a"
+  "background_color": "#05050a",
+  "description": "Portfolio of Sandeep Uthayakumar — software engineer at HSBC. Backend systems, full-stack products and published ML research.",
+  "lang": "en"
 }
