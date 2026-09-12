@@ -145,9 +145,9 @@ export default function Multiverse() {
 
         <Reveal>
           <p className="lead verse__intro">
-            Three builds from three different corners of the stack — a signed
-            blockchain client, a published malware classifier, and an LLM study
-            assistant that streams.
+            Four builds from four different corners of the stack — a Next.js
+            storefront, a published malware classifier, a Transformer that
+            answers DSA questions, and a signed blockchain client.
           </p>
         </Reveal>
 

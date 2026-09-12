@@ -123,7 +123,7 @@ export default function Missions() {
 
         <Reveal className="log__foot">
           <p className="mono log__footNote">
-            Three postings · two research labs · one bank
+            Three postings · one research lab · one trading floor
           </p>
         </Reveal>
 
