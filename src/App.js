@@ -4,6 +4,7 @@ import Backdrop from "./components/Backdrop.jsx";
 import Cursor from "./components/Cursor.jsx";
 import Preloader from "./components/Preloader.jsx";
 import Nav from "./components/Nav.jsx";
+import Dock from "./components/Dock.jsx";
 
 import Hero from "./components/Hero.jsx";
 import Mask from "./components/Mask.jsx";
@@ -111,6 +112,8 @@ export default function App() {
       </main>
 
       <Signal />
+
+      <Dock />
     </>
   );
 }

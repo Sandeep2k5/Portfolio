@@ -1,0 +1,220 @@
+/* ============================================================
+   PRINT — the comic collapses to a clean résumé-style document.
+   Loaded last so it can override the screen cascade.
+
+   Two things make this file heavier than a usual print sheet:
+   1. GSAP writes inline opacity/transform on every Reveal, so any
+      chapter the reader never scrolled to would print blank. Those
+      inline styles are neutralised with !important.
+   2. The WebGL city, cursor, HUD and boot sequence are pure screen
+      furniture and are removed outright.
+   ============================================================ */
+
+@media print {
+  /* ---------- 1 · undo the scroll-reveal machinery ---------- */
+  #main *,
+  #signal * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ---------- 2 · drop the screen-only furniture ---------- */
+  .world,
+  .world-fallback,
+  .vignette,
+  .grain,
+  .cursor,
+  .boot,
+  .nav,
+  .strand,
+  .rail,
+  .menu,
+  .dock,
+  .skip-link,
+  .signal__beam,
+  .web-corner,
+  .sense,
+  .marquee,
+  .boom {
+    display: none !important;
+  }
+
+  /* ---------- 3 · paper palette ---------- */
+  :root {
+    --bg: #ffffff;
+    --bg-elev: #ffffff;
+    --bg-sunk: #ffffff;
+    --text: #000000;
+    --text-sub: #333333;
+    --text-mute: #555555;
+    --accent: #000000;
+    --accent-deep: #000000;
+    --line: #cccccc;
+    --line-strong: #999999;
+    --glass: transparent;
+    --white: #000000;
+    --paper: #ffffff;
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  /* perspective containers become plain blocks so nothing clips */
+  .act,
+  .act--tall,
+  .act--hero,
+  .shell,
+  .wrap {
+    perspective: none !important;
+    transform-style: flat !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding-block: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* ---------- 4 · document rhythm ---------- */
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  .act {
+    break-inside: auto;
+    padding-bottom: 10mm;
+  }
+
+  h1,
+  h2,
+  h3,
+  .display,
+  .signal__title {
+    break-after: avoid;
+    color: #000000 !important;
+    font-size: 16pt !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .lead,
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .panel,
+  .card,
+  .wire {
+    border: 1px solid #999999 !important;
+    background: transparent !important;
+    break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    break-inside: avoid;
+  }
+
+  /* ---------- 5 · links carry their destination ---------- */
+  a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+  a[href^="http"]::after,
+  a[href^="mailto"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    word-break: break-all;
+    font-weight: 400;
+  }
+  /* in-page jumps and the résumé download are noise on paper */
+  a[href^="#"]::after,
+  a[download]::after {
+    content: "";
+  }
+  /* The Signal rows already print the address as their visible value, and
+     .wire is a grid — an appended URL lands in the icon column and wraps
+     into a one-word-wide ribbon. Suppress it there only. */
+  .wire::after,
+  .signal__top::after {
+    content: "" !important;
+  }
+  .signal__top {
+    display: none !important;
+  }
+  a[download] {
+    display: none !important;
+  }
+
+  /* ---------- 6 · outline type becomes solid ink ----------
+     Several display lines are painted as transparent fill plus a coloured
+     -webkit-text-stroke. On paper that reads as a hollow ghost, so the
+     fill is restored and the stroke dropped. */
+  .display,
+  .hero__line,
+  .hero__line--1,
+  .hero__line--2,
+  .signal__line,
+  .head__title,
+  h1, h2, h3 {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    -webkit-text-stroke: 0 !important;
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+  }
+
+  /* ---------- 7 · chrome that only makes sense on screen ---------- */
+  .hero__actions,
+  .hero__cue,
+  .hero__rule,
+  .hero__boom,
+  .marquee-bleed,
+  .btn {
+    display: none !important;
+  }
+
+  /* ---------- 8 · badges and panels get paper contrast ---------- */
+  .stamp {
+    color: #000000 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #000000 !important;
+    transform: none !important;
+  }
+  .stamp__dot {
+    display: none !important;
+  }
+
+  .panel,
+  .card,
+  .wire,
+  .hero__statPanel,
+  [class*="__panel"],
+  [class*="__card"] {
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+
+  /* ---------- 9 · the hero stops eating a whole page ---------- */
+  .act--hero {
+    padding-top: 0 !important;
+  }
+  .hero__title {
+    margin-bottom: 4mm !important;
+  }
+  .hero__lead {
+    margin-bottom: 4mm !important;
+  }
+}

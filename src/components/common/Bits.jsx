@@ -62,6 +62,14 @@ export const Icon = ({ name, size = 18, ...rest }) => {
       </>
     ),
     chevron: <path d="M6 9l6 6 6-6" />,
+    up: <path d="M12 20V5m0 0l-6 6m6-6l6 6" />,
+    copy: (
+      <>
+        <rect x="9" y="9" width="12" height="12" rx="2" />
+        <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" />
+      </>
+    ),
+    check: <path d="M4 12.5l5.2 5.2L20 7" />,
   };
   return (
     <svg

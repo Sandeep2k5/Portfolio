@@ -509,3 +509,118 @@
   background: linear-gradient(90deg, var(--red-500), var(--blue-500));
   transition: transform 220ms linear;
 }
+
+/* ============================== DOCK ============================= */
+/* Floating actions: copy email, contact, back to top. Sits under the
+   chapter rail's z-index band but clear of it in space — rail is
+   vertically centred on the right, the dock hugs the bottom. */
+.dock {
+  position: fixed;
+  right: clamp(14px, 2vw, 26px);
+  bottom: clamp(14px, 2.5vw, 28px);
+  z-index: 66;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity var(--d-mid) var(--e-out),
+    transform var(--d-mid) var(--e-out),
+    visibility 0s linear var(--d-mid);
+}
+.dock.is-shown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.dock__btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--text);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  transition:
+    transform var(--d-fast) var(--e-out),
+    box-shadow var(--d-fast) var(--e-out),
+    color var(--d-fast) var(--e-out),
+    background var(--d-fast) var(--e-out);
+}
+.dock__btn:hover,
+.dock__btn:focus-visible {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+.dock__btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
+}
+.dock__btn--cta {
+  color: var(--white);
+  background: var(--accent-deep);
+}
+.dock__btn--cta:hover,
+.dock__btn--cta:focus-visible {
+  color: var(--white);
+  background: var(--accent);
+}
+.dock__btn.is-ok {
+  color: #000;
+  background: var(--amber-400);
+}
+.dock__btn.is-fail {
+  color: var(--white);
+  background: var(--red-600);
+}
+
+/* label slides out of the button's left edge on hover / focus */
+.dock__tip {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  padding: 6px 10px;
+  font-size: var(--t-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text);
+  background: var(--bg-sunk);
+  border: 1px solid var(--line-strong);
+  opacity: 0;
+  transform: translateY(-50%) translateX(6px);
+  pointer-events: none;
+  transition:
+    opacity var(--d-fast) var(--e-out),
+    transform var(--d-fast) var(--e-out);
+}
+.dock__btn:hover .dock__tip,
+.dock__btn:focus-visible .dock__tip,
+.dock__btn.is-ok .dock__tip,
+.dock__btn.is-fail .dock__tip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock,
+  .dock__btn,
+  .dock__tip {
+    transition-duration: 1ms;
+  }
+  .dock__btn:hover,
+  .dock__btn:active,
+  .dock__btn:focus-visible {
+    transform: none;
+  }
+}
