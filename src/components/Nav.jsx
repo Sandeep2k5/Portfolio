@@ -148,11 +148,12 @@ export default function Nav() {
           <a
             className="btn btn--sm"
             href={resumePdf}
-            download="Sandeep-Uthayakumar-Resume.pdf"
-            data-cursor="GRAB"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="READ"
           >
             Résumé
-            <Icon name="download" size={14} />
+            <Icon name="external" size={14} />
           </a>
           <button
             className="nav__burger"
@@ -226,11 +227,12 @@ export default function Nav() {
         <a
           className="menu__item menu__item--cta"
           href={resumePdf}
-          download="Sandeep-Uthayakumar-Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span className="menu__num">06</span>
           <span className="menu__label">Résumé</span>
-          <Icon name="download" size={22} />
+          <Icon name="external" size={22} />
         </a>
       </div>
     </>

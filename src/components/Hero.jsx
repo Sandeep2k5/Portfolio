@@ -122,12 +122,13 @@ export default function Hero() {
           </a>
           <a
             href={resumePdf}
-            download="Sandeep-Uthayakumar-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn--ghost"
-            data-cursor="GRAB"
+            data-cursor="READ"
           >
             Résumé
-            <Icon name="download" size={15} />
+            <Icon name="external" size={15} />
           </a>
         </div>
 
