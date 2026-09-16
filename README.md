@@ -24,7 +24,7 @@
 
 Most developer portfolios are a stack of cards on a dark background. This one
 asks a harder question: **what if the page and the 3D world were literally the
-same journey?**
+same journey? **
 
 There is exactly one scene, mounted once, alive for the whole session.
 Scrolling is not a page transition — it is camera travel along a Catmull-Rom
