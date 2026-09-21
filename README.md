@@ -6,7 +6,7 @@
 
 ### Not a page. A flight through a city.
 
-### [→ sandeep2k5.netlify.app](https://sandeep2k5.netlify.app/)
+### [→ sandeep2k5.is-a.dev](https://sandeep2k5.is-a.dev/)
 
 [![React](https://img.shields.io/badge/React-18.3-61dafb?style=for-the-badge&logo=react&logoColor=000)](https://react.dev)
 [![three.js](https://img.shields.io/badge/three.js-r180-000000?style=for-the-badge&logo=three.js&logoColor=fff)](https://threejs.org)
