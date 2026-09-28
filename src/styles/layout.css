@@ -916,6 +916,10 @@
 .signal__built {
   color: var(--text-mute);
 }
+.signal__views b {
+  font-weight: 500;
+  color: var(--accent);
+}
 .signal__top {
   display: inline-flex;
   align-items: center;

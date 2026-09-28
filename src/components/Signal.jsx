@@ -3,12 +3,41 @@
    so this chapter is the spider-signal thrown at the clouds.
    ============================================================ */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PROFILE, LINKS } from "../data/site.js";
 import { Head, Reveal, Icon, Split, Panel } from "./common/Bits.jsx";
 import resumePdf from "../assets/Hero/Sandeep_Resume.pdf";
 
+// Total views, not unique: every page load adds one. Abacus is a free
+// keyless counter; /hit increments and returns { value }.
+const VIEWS_URL = "https://abacus.jasoncameron.dev/hit/sandeep2k5-is-a-dev/views";
+
+// Module-level so StrictMode's double effect and remounts still hit once per load.
+let viewsRequest = null;
+
+function useViewCount() {
+  const [views, setViews] = useState(null);
+
+  useEffect(() => {
+    if (!viewsRequest) {
+      viewsRequest = fetch(VIEWS_URL)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => (Number.isFinite(data?.value) ? data.value : null))
+        .catch(() => null);
+    }
+    let live = true;
+    viewsRequest.then((value) => live && setViews(value));
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  return views;
+}
+
 export default function Signal() {
+  const views = useViewCount();
+
   return (
     <footer id="signal" className="act act--tall signal">
       <div className="wrap">
@@ -91,6 +120,11 @@ export default function Signal() {
             <span className="mono signal__built">
               React · three.js · GSAP · hand-written GLSL
             </span>
+            {views !== null && (
+              <span className="mono signal__views">
+                <b>{views.toLocaleString("en-US")}</b> views
+              </span>
+            )}
             <a className="signal__top" href="#origin" data-cursor="UP">
               Back to the top
               <Icon name="arrow" size={14} />
